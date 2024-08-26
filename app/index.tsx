@@ -147,7 +147,16 @@ export default function HomeScreen() {
           title="View"
         />
         <Divider />
-        <Menu.Item leadingIcon={"pencil"} onPress={() => {}} title="Edit" />
+        <Menu.Item
+          leadingIcon={"pencil"}
+          onPress={() => {
+            if (!activeUser) return;
+
+            router.push(`/edit/${activeUser.id}`);
+            setIsMenuVisible(false);
+          }}
+          title="Edit"
+        />
         <Divider />
         <Menu.Item
           leadingIcon={"delete"}

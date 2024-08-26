@@ -22,6 +22,6 @@ export const useUserList = (params?: UserListParams) => {
       fetch(
         `https://reqres.in/api/users?${stringifyQueryParams(params ?? {})}`,
       ).then((res) => res.json() as Promise<UserListResponse>),
-    staleTime: 5000,
+    staleTime: 10000,
   });
 };

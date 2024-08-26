@@ -36,6 +36,7 @@ export default function RootLayout() {
             options={{ headerShown: false, title: "Home" }}
           />
           <Stack.Screen name="user/[id]" options={{ title: "Details" }} />
+          <Stack.Screen name="edit/[id]" options={{ title: "Edit" }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </PaperProvider>
