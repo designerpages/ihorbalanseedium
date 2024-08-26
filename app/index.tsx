@@ -17,6 +17,7 @@ import PaginationDot from "react-native-animated-pagination-dot";
 import { useTheme } from "react-native-paper";
 import { useUserDelete } from "@/hooks/api/useUserDelete";
 import { User } from "@/types/user.type";
+import { router } from "expo-router";
 
 export default function HomeScreen() {
   const theme = useTheme();
@@ -82,7 +83,7 @@ export default function HomeScreen() {
                   key={user.id}
                   title={user.first_name}
                   subtitle={user.email}
-                  left={(props) => (
+                  left={() => (
                     <Avatar.Image size={32} source={{ uri: user.avatar }} />
                   )}
                   right={(props) => (
@@ -137,7 +138,12 @@ export default function HomeScreen() {
       >
         <Menu.Item
           leadingIcon={"eye-outline"}
-          onPress={() => {}}
+          onPress={() => {
+            if (!activeUser) return;
+
+            router.push(`/user/${activeUser.id}`);
+            setIsMenuVisible(false);
+          }}
           title="View"
         />
         <Divider />
@@ -156,22 +162,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-  },
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
   },
   content: {
     flex: 1,
